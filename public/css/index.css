@@ -1,0 +1,128 @@
+body {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)), url('/src/img/fondo.jpg') center center / cover no-repeat;
+  margin: 0;
+}
+body.page-fade {
+  opacity: 0;
+  transition: opacity 0.65s cubic-bezier(.5,1.5,.5,1);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 10;
+  background: rgba(10, 23, 49, 0.70);
+  box-shadow: 0 2px 12px #0003;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.1rem 2rem;
+}
+.login-btn {
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: linear-gradient(90deg, #232a42 0%, #355189 100%);
+  border: none;
+  border-radius: 11px;
+  box-shadow: 0 2px 7px 0 #28386e33;
+  padding: 0.52rem 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  cursor: pointer;
+  transition:
+    background 0.24s cubic-bezier(.45,1.5,.55,1),
+    box-shadow 0.21s cubic-bezier(.45,1.5,.55,1),
+    transform 0.18s cubic-bezier(.47,1.7,.58,1.02);
+  /* Efecto animado */
+  will-change: transform, box-shadow;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-btn .icon-user svg {
+  display: block;
+  margin-right: 0.1em;
+  filter: drop-shadow(0 0 6px #3659be33);
+  transition: filter 0.25s;
+}
+
+.login-btn:hover,
+.login-btn:focus {
+  background: linear-gradient(90deg, #2b314d 0%, #386bc5 100%);
+  box-shadow: 0 6px 24px 0 #3b69d688, 0 1.5px 5px 0 #0003;
+  transform: translateY(-4px) scale(1.035);
+}
+
+.login-btn:hover .icon-user svg,
+.login-btn:focus .icon-user svg {
+  filter: drop-shadow(0 0 20px #65c2ff99);
+}
+
+.login-btn::after {
+  content: '';
+  position: absolute;
+  left: -35%;
+  top: 0;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(120deg, #70d3ff33 0%, #00154000 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+
+.login-btn:hover::after,
+.login-btn:focus::after {
+  opacity: 0.26;
+  animation: lightmove 0.6s;
+}
+
+@keyframes lightmove {
+  0%   { left: -35%; opacity: 0.10; }
+  35%  { opacity: 0.22; }
+  60%  { opacity: 0.27; }
+  100% { left: 100%; opacity: 0; }
+}
+
+
+.center-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.bienvenido {
+  font-size: 3.3rem;
+  font-weight: 700;
+  color: #f4f7fa;
+  text-shadow: 0 8px 16px #0cf3fb22, 0 2px 8px #00308055;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Logo más grande, redondeado tipo iOS, sin fondo ni brillo fuerte */
+.logo-img {
+  width: 320px;
+  height: 320px;
+  max-width: 95vw;
+  object-fit: cover;
+  filter: brightness(1.04) drop-shadow(0 4px 16px #0099ff22);
+  border-radius: 36px;    /* Más redondeado */
+  background: transparent; /* Sin fondo oscuro */
+  padding: 0;             /* Sin padding */
+  margin-bottom: 2.2rem;
+  animation: floatLogo 2.6s infinite alternate cubic-bezier(.4,2.7,.5,1);
+}
+
+@keyframes floatLogo {
+  from { transform: translateY(0);}
+  to { transform: translateY(-10px);}
+}

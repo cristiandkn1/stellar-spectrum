@@ -1,0 +1,52 @@
+---
+const navLinks = [
+  { href: "/", label: "Inicio", icon: "bi-house-door-fill" },
+  { href: "/inventario", label: "Inventario", icon: "bi-box-seam" }
+];
+
+// Detecta la ruta actual (en Astro puedes usar Astro.url.pathname desde Astro 3+)
+const currentPath = Astro.url.pathname;
+---
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/inventario">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+          <path d="M9.643 1.314a1.5 1.5 0 0 0-1.286 0l-5 2.5A1.5 1.5 0 0 0 2 5.118V10.5a1.5 1.5 0 0 0 .857 1.367l5 2.5a1.5 1.5 0 0 0 1.286 0l5-2.5A1.5 1.5 0 0 0 14 10.5V5.118a1.5 1.5 0 0 0-.857-1.304l-5-2.5zm-4.24 2.421 4.598 2.299c.26.13.564.13.824 0l4.598-2.299A.5.5 0 0 1 14 5.118v.486l-5.314 2.654a1.5 1.5 0 0 1-1.372 0L2 5.604v-.486a.5.5 0 0 1 .403-.483zm-.403 3.275 4.245 2.118a2.5 2.5 0 0 0 2.21 0l4.245-2.118v3.49a.5.5 0 0 1-.285.45l-5 2.5a.5.5 0 0 1-.43 0l-5-2.5A.5.5 0 0 1 2 10.5v-3.49z"/>
+        </svg>
+        Inventario
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          {navLinks.map(link => (
+            <li class="nav-item" key={link.href}>
+              <a 
+                class={`nav-link d-flex align-items-center gap-2${currentPath === link.href ? ' active nav-glow' : ''}`}
+                aria-current={currentPath === link.href ? "page" : undefined}
+                href={link.href}
+                style={currentPath === link.href ? "font-weight:bold;" : ""}
+              >
+                <i class={`bi ${link.icon}`}></i> {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <style>
+    .nav-glow {
+      text-shadow: 0 0 10px #b388ff, 0 0 24px #7c4dff;
+      box-shadow: 0 2px 18px 0 #7c4dff77;
+      border-radius: .4em;
+      background: rgba(124,77,255,0.08);
+    }
+    .nav-link.active {
+      color: #fff !important;
+    }
+  </style>
+</header>

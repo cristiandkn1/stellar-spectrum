@@ -12,6 +12,12 @@
     "@astrojs/starlight": "^0.34.3",
     "astro": "^5.8.1",
     "astro-icon": "^1.1.5",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
     "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.8"
   }
 }
